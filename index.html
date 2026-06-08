@@ -89,7 +89,6 @@
             background: #48d667;
         }
         
-
         .nav-menu{
             display: flex;
             list-style: none;
@@ -175,9 +174,9 @@
                 <div class="text">
                     <label for="pass"> Masukkan Password</label>
                 </div>
-                <div class="input">
-                    <input type="password" name="pass" id="pass" class=".color-black pass">
-                    <button type="button" class="eye">
+                <div class="input pass">
+                    <input type="password" name="pass" id="pass" class=".color-black">
+                    <button type="button" class="eye pass">
                         <svg class="active" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>
                     </button>
@@ -187,9 +186,9 @@
                 <div class="text">
                     <label for="confirmPass"> Konfirmasi Password</label>
                 </div>
-                <div class="input">
+                <div class="input confirmPass">
                     <input type="password" name="confirmPass" id="confirmPass" class=".color-black pass">
-                    <button type="button" class="eye">
+                    <button type="button" class="eye confirmPass">
                         <svg class="active" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>
                     </button>
@@ -204,13 +203,16 @@
     </div>
 
     <script>
-        const clickPass = document.querySelector('.eye')
-        const inputPass = document.querySelector('.pass')
+        const clickPass = document.querySelector('button.eye.pass')
+        const confirmPassKlik = document.querySelector('button.eye.confirmPass')
+
+        const inputPass = document.getElementById('pass')
+        const confirmPass = document.getElementById('confirmPass')
 
         const hamburger = document.querySelector('.toggle-button')
 
         clickPass.addEventListener("click", function(){
-           const icons = document.querySelectorAll('.eye svg'); 
+           const icons = document.querySelectorAll('.pass .eye svg'); 
 
             icons.forEach(svg => {
                 svg.classList.toggle('active');
@@ -222,6 +224,21 @@
                 inputPass.type = "password";
             }
         })
+        
+        confirmPassKlik.addEventListener("click", function(){
+           const icons = document.querySelectorAll('.confirmPass .eye svg'); 
+
+            icons.forEach(svg => {
+                svg.classList.toggle('active');
+            });
+
+            if (confirmPass.type === "password") {
+                confirmPass.type = "text";
+            } else {
+                confirmPass.type = "password";
+            }
+        })
+        
         hamburger.addEventListener('click', function(){
             const navMenu = document.querySelector('.nav-menu')
 
