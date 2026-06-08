@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            min-width: 100vh;
+        }
+
+        form{
+            display: grid;
+            gap: 12px;
+        }
+
+        .title{
+            font-weight: 600;
+            font-size: 24px;
+            color: black;
+        }
+
+        .text{
+            font-weight: 400;
+            font-size: 14px;
+            color: gray;
+        }
+
+        .color-black{
+            color: black;
+        }
+
+        .container-input{
+            display: grid;
+            gap: 4px;
+            min-width: 200px;
+        }
+
+        .input{
+            width: 100%;
+            position: relative;
+        }
+        input{
+            width: 100%;
+            padding: 2px 4px;
+        }
+        .eye{
+            position: absolute;
+            border: none;
+            background: none;
+            right: 0;
+            padding: 3px 4px;
+            cursor: pointer;
+        }
+
+        .eye svg{
+            display: none;
+        }
+
+        .eye svg.active{
+            display: block;
+        }
+
+        .button-submit{
+            color: white;
+            background: blue;
+            border-radius: 4px;
+            padding-bottom: 4px;
+            padding-top: 4px;
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+    <form>
+        <h1 class="title">Ubah Password</h1>
+        <div class="container-input">
+            <div class="text">
+                <label for="pass"> Masukkan Password</label>
+            </div>
+            <div class="input">
+                <input type="password" name="pass" id="pass" class=".color-black pass">
+                <button type="button" class="eye">
+                    <svg class="active" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="container-input">
+            <div class="text">
+                <label for="confirmPass"> Konfirmasi Password</label>
+            </div>
+            <div class="input">
+                <input type="password" name="confirmPass" id="confirmPass" class=".color-black pass">
+                <button type="button" class="eye">
+                    <svg class="active" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="container-input">
+            <button type="submit" class="button-submit">
+                Ubah Password
+            </button>
+        </div>
+    </form>
+
+    <script>
+        const clickPass = document.querySelector('.eye')
+        const inputPass = document.querySelector('.pass')
+
+        clickPass.addEventListener("click", function(){
+           const icons = document.querySelectorAll('.eye svg'); 
+
+            icons.forEach(svg => {
+                svg.classList.toggle('active');
+            });
+
+            if (inputPass.type === "password") {
+                inputPass.type = "text";
+            } else {
+                inputPass.type = "password";
+            }
+        })
+    </script>
+</body>
+</html>
